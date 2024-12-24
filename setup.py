@@ -83,13 +83,6 @@ class CMakeBuild(build_ext):
     def _prepare_environment(self):
         gcc, gpp = self._find_suitable_gcc_gpp()
 
-        gcc_path = shutil.which(gcc)
-        gpp_path = shutil.which(gpp)
-
-        if gcc_path is None:
-            raise RuntimeError(f"{gcc} not found in PATH")
-        if gpp_path is None:
-            raise RuntimeError(f"{gpp} not found in PATH")
 
         os.environ["CC"] = gcc_path
         os.environ["CXX"] = gpp_path
