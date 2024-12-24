@@ -74,9 +74,11 @@ class CMakeBuild(build_ext):
         all_gccs = self._get_all_gcc_commands()
         for gcc in all_gccs:
             matching_gpp = gcc.replace("cc", "++")
-            if shutil.which(gcc) and shutil.which(matching_gpp):
+            gcc_path = shutil.which(gcc)
+            gpp_path = shutil.which(matching_gpp)
+            if  gcc_path and gpp_path:
                 print(f'Found suitable gcc/g++ version {gcc} {matching_gpp}')
-                return gcc, matching_gpp
+                return gcc_path, gpp_path
 
         raise RuntimeError("gcc >= 8.0 not found on the system")
 
