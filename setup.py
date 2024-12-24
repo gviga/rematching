@@ -81,7 +81,7 @@ class CMakeBuild(build_ext):
         raise RuntimeError("gcc >= 8.0 not found on the system")
 
     def _prepare_environment(self):
-        gcc, gpp = self._find_suitable_gcc_gpp()
+        gcc_path, gpp_path = self._find_suitable_gcc_gpp()
 
 
         os.environ["CC"] = gcc_path
